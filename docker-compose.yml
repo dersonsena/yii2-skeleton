@@ -8,3 +8,23 @@ services:
       - ./:/app:delegated
     ports:
       - '${DOCKER_APP_PORT}:80'
+    networks:
+      - yii2-skeleton
+
+  mysql57:
+    image: mysql:5.7
+    container_name: yii2-skeleton-db
+    restart: always
+    ports:
+      - "${DOCKER_MYSQL_PORT}:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_DATABASE: ${DB_DATABASE}
+    networks:
+      - yii2-skeleton
+    volumes:
+      - ./.docker/data:/var/lib/mysql
+
+networks:
+  yii2-skeleton:
+    driver: bridge

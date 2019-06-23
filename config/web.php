@@ -59,6 +59,15 @@ if (YII_ENV_DEV) {
     $config['modules']['gii'] = [
         'class' => 'yii\gii\Module',
         'allowedIPs' => ['*'],
+        'generators' => [
+            'model' => [
+                'class' => 'yii\gii\generators\model\Generator',
+                'ns' => 'App\\Models',
+                'queryNs' => 'App\\Models',
+                'useTablePrefix' => true,
+                'singularize' => true
+            ],
+        ],
     ];
 }
 

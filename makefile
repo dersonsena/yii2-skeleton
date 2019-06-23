@@ -8,6 +8,9 @@ composer-dump:
 migrate:
 	docker exec -it yii2-skeleton-app yii migrate
 
+migrate-create:
+	docker exec -it yii2-skeleton-app yii migrate/create ${NAME}
+
 migrate-down:
 	docker exec -it yii2-skeleton-app yii migrate/down
 
