@@ -3,12 +3,15 @@ $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
 
 $config = [
-    'id' => 'basic',
+    'id' => 'yii2-skeleton',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
+    ],
+    'controllerMap' => [
+        'site' => \App\Controllers\SiteController::class
     ],
     'components' => [
         'request' => [
@@ -18,7 +21,7 @@ $config = [
             'class' => 'yii\caching\FileCache',
         ],
         'user' => [
-            'identityClass' => 'app\models\User',
+            'identityClass' => 'App\Models\User',
             'enableAutoLogin' => true,
         ],
         'errorHandler' => [

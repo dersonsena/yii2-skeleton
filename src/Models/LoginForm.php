@@ -1,6 +1,6 @@
 <?php
 
-namespace app\models;
+namespace App\Models;
 
 use Yii;
 use yii\base\Model;
@@ -17,8 +17,7 @@ class LoginForm extends Model
     public $password;
     public $rememberMe = true;
 
-    private $_user = false;
-
+    private $user = false;
 
     /**
      * @return array the validation rules.
@@ -72,10 +71,10 @@ class LoginForm extends Model
      */
     public function getUser()
     {
-        if ($this->_user === false) {
-            $this->_user = User::findByUsername($this->username);
+        if ($this->user === false) {
+            $this->user = User::findByUsername($this->username);
         }
 
-        return $this->_user;
+        return $this->user;
     }
 }
