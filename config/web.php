@@ -6,12 +6,10 @@ $config = [
     'id' => 'yii2-skeleton',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
+    'controllerNamespace' => 'App\Controllers',
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
-    ],
-    'controllerMap' => [
-        'site' => \App\Controllers\SiteController::class
     ],
     'components' => [
         'request' => [
