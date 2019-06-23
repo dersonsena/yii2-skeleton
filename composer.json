@@ -30,6 +30,12 @@
         "codeception/specify": "~0.4.6",
         "symfony/browser-kit": ">=2.7 <=4.2.4"
     },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src\\",
+            "App\\Tests\\": "tests\\"
+        }
+    },
     "config": {
         "process-timeout": 1800,
         "fxp-asset": {
