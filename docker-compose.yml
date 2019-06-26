@@ -1,7 +1,7 @@
 version: '2'
 services:
   php:
-    container_name: yii2-skeleton-app
+    container_name: ${DOCKER_APP_SERVICE_NAME}
     image: yiisoftware/yii2-php:7.1-apache
     volumes:
       - ~/.composer-docker/cache:/root/.composer/cache:delegated
@@ -13,7 +13,7 @@ services:
 
   mysql57:
     image: mysql:5.7
-    container_name: yii2-skeleton-db
+    container_name: ${DOCKER_DB_SERVICE_NAME}
     restart: always
     ports:
       - "${DOCKER_MYSQL_PORT}:3306"

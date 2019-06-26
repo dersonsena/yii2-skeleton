@@ -1,17 +1,10 @@
 {
-    "name": "yiisoft/yii2-app-basic",
-    "description": "Yii 2 Basic Project Template",
-    "keywords": ["yii2", "framework", "basic", "project template"],
-    "homepage": "http://www.yiiframework.com/",
+    "name": "dersonsena/yii2-skeleton",
+    "description": "A new approach for yii2 basic template",
+    "keywords": ["yii2", "yii2 skeleton", "yii2-template", "template"],
+    "homepage": "http://www.yiiacademy.com.br",
     "type": "project",
     "license": "BSD-3-Clause",
-    "support": {
-        "issues": "https://github.com/yiisoft/yii2/issues?state=open",
-        "forum": "http://www.yiiframework.com/forum/",
-        "wiki": "http://www.yiiframework.com/wiki/",
-        "irc": "irc://irc.freenode.net/yii",
-        "source": "https://github.com/yiisoft/yii2"
-    },
     "minimum-stability": "stable",
     "require": {
         "php": ">=7",
