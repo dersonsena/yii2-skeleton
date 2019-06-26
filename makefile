@@ -2,10 +2,13 @@
 include .env
 export $(shell sed 's/=.*//' .env)
 
-composer-require:
+install:
+	docker exec -it ${DOCKER_APP_SERVICE_NAME} composer install -o
+
+require:
 	docker exec -it ${DOCKER_APP_SERVICE_NAME} composer require ${PACKAGE}
 
-composer-dump:
+dump:
 	docker exec -it ${DOCKER_APP_SERVICE_NAME} composer dump-autoload
 
 migrate:
