@@ -107,4 +107,4 @@ make install
 
 Thanks [@wilcorrea](https://github.com/wilcorrea) for showing me this simple yet useful approach.
 
-PS: See the `makefile` file to see all available commands.
+PS: See the [makefile](https://github.com/dersonsena/yii2-skeleton/blob/master/makefile) file to see all available commands.
