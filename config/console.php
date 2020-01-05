@@ -10,7 +10,9 @@ $config = [
     'controllerMap' => [
         'migrate' => [
             'class' => 'yii\console\controllers\MigrateController',
-            'migrationPath' => __DIR__ . '/../src/Migrations'
+            'templateFile' => '@app/Core/Migration/migration-template.php',
+            'migrationPath' => null,
+            'migrationNamespaces' => ['App\Migrations']
         ]
         /*'fixture' => [ // Fixture generation command line.
             'class' => 'yii\faker\FixtureController',
