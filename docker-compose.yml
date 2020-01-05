@@ -1,6 +1,6 @@
 version: '2'
 services:
-  php:
+  app:
     container_name: ${DOCKER_APP_SERVICE_NAME}
     image: yiisoftware/yii2-php:7.1-apache
     volumes:
@@ -10,8 +10,10 @@ services:
       - '${DOCKER_APP_PORT}:80'
     networks:
       - yii2-skeleton
+    depends_on:
+      - mysql
 
-  mysql57:
+  mysql:
     image: mysql:5.7
     container_name: ${DOCKER_DB_SERVICE_NAME}
     restart: always
