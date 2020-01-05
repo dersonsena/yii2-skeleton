@@ -1,6 +1,7 @@
 <?php
 
 return [
+    // Instruction to create Routes
     // To create a standalone route:
     // 'pattern/to/your/route' => 'controller-id/action-id'
 
