@@ -10,10 +10,9 @@ abstract class MigrationAbstract extends Migration
     /**
      * Setup the binary id column
      * @param int $size
-     * @return string
-     * @throws \yii\base\NotSupportedException
+     * @return \yii\db\ColumnSchemaBuilder
      */
-    public function binaryId(int $size = 16): string
+    public function binaryId(int $size = 16)
     {
         return $this->getDb()->getSchema()->createColumnSchemaBuilder("BINARY({$size})");
     }

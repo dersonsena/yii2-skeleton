@@ -27,8 +27,7 @@ class <?= $className ?> extends MigrationAbstract
     {
         // set the table columns
         $columns = [
-            'id' => $this->binaryId(),
-            'uuid' => $this->uuid(),
+            'id' => $this->primaryKey(),
             'status' => $this->status(),
             'deleted' => $this->deleted()
         ];
@@ -38,8 +37,6 @@ class <?= $className ?> extends MigrationAbstract
             array_merge($columns, $this->blameAndTimedEventsColumns()),
             'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB'
         );
-
-        $this->addPrimaryKey('pk_table_name_id', '{{%table_name}}', 'id');
     }
 
     /**
