@@ -35,34 +35,35 @@ Make a copy of the `.env.sample` file, you can use `cp .env.sample .env` in your
 
 You can place your environment settings in `.env` file, as below (note the sample file is ready to basic usage):
 
-```yml
+```bash
+# ---------
+# Project
+# ---------
+PROJECT_NAME=yii2-skeleton
+
 # ---------
 # Docker
 # ---------
-DOCKER_APP_PORT=8000
-DOCKER_APP_SERVICE_NAME=yii2-skeleton-app
-DOCKER_DB_SERVICE_NAME=yii2-skeleton-db
-DOCKER_MYSQL_PORT=4500
-XDEBUG_REMOTE_HOST=
+DOCKER_APP_PORT=8080
+DOCKER_MYSQL_PORT=3306
 XDEBUG_REMOTE_PORT=9000
+XDEBUG_REMOTE_HOST=host.docker.internal
 
 # ---------
 # Yii Framework
 # ---------
 YII_DEBUG=true
 YII_ENV=dev
-REQUEST_COOKIE_VALIDATION_KEY=mL3QmMN-xV-uyY3VyqE9P-M5YzxMTrSn
+REQUEST_COOKIE_VALIDATION_KEY=YOUR_VALIDATION_KEY
 
 # ---------
 # Database
 # ---------
-DB_DSN=mysql:host=yii2-skeleton-db;dbname=yii2-skeleton
+DB_DSN=mysql:host=your-db-host;dbname=yii2_skeleton
 DB_USERNAME=root
 DB_PASSWORD=secret
-DB_DATABASE=yii2-skeleton
-DB_TABLE_PREFIX=
+DB_DATABASE=yii2_skeleton
 DB_CHARSET=utf8
-
 DB_ENABLE_SCHEMA_CACHE=false
 DB_SCHEMA_CACHE_DURATION=60
 DB_SCHEMA_CACHE_NAME=cache
@@ -70,19 +71,21 @@ DB_SCHEMA_CACHE_NAME=cache
 # ---------
 # Mailer
 # ---------
-SMTP_HOST=your.smtp.dns
-SMTP_PORT=437
-SMTP_USERNAME=your_smtp_username
-SMTP_PASSWORD=your_smtp_password
+SMTP_HOST=
+SMTP_PORT=
+SMTP_USERNAME=
+SMTP_PASSWORD=
 SMTP_ENCRYPTION=
 ```
 
 ### Run your Application
 
-To start your application using Docker container, just run the follow command:
+Before anything change `PROJECT_NAME` env variable to your project name/alias. This one it will be used to prefixed the application containers and other stuff.
+
+To start your application and start up your containers just run the follow command:
 
 ```
-docker-compose up -d
+make run
 ```
 
 If you have set a `DOCKER_APP_PORT` environment variable to `8000`, you will can then access the yout application through the following URL:
