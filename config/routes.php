@@ -1,6 +1,9 @@
 <?php
 
 return [
+    // To create a Cohesive Controller (most recommended)
+    //'specific/route/to/cohesive/controller' => 'cohesive-xpto-routine'
+
     // To create a standalone route:
     // 'pattern/to/your/route' => 'controller-id/action-id'
 

@@ -94,7 +94,40 @@ If you have set a `DOCKER_APP_PORT` environment variable to `8000`, you will can
 http://localhost:8000
 ```
 
-### The useful Make file
+COHESIVE CONTROLLER
+------------
+trying to follow the best programming practices, this boilerplate has a controller type called [CohesiveController](./src/Core/Controller/CohesiveController.php) to help you a create a controller class with a single action (aka `handle()` method) and a single responsibility.
+
+To create a cohesive controller got to [config/routes.php](./config/routes.php) and add your route such as:
+
+```php
+return [
+    // other routes...
+
+    'specific/route/to/cohesive/a/controller' => 'cohesive-xpto-routine'
+];
+```
+
+The next step is create your `CohesiveXptoRoutineController` class extending from `App\Core\Controller\CohesiveController` and implement the `handle()` method, as below:
+
+```php
+namespace App\Controllers;
+
+use App\Core\Controller\CohesiveController;
+
+class CohesiveXptoRoutineController extends CohesiveController
+{
+    public function handle()
+    {
+        // your cohesive and specific implementation here =)
+    }
+}
+```
+
+Finally, access your Cohesive action: http://localhost:8080/specific/route/to/cohesive/a/controller
+
+THE USEFUL MAKEFILE
+------------
 
 The makefile file has several commands to help with day-to-day work. In it you can execute commands inside the container by typing a few letters in your terminal.
 
