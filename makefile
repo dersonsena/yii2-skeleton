@@ -33,6 +33,11 @@ install: ## Composer install dependencies
 	@docker exec -it "${PROJECT_NAME}-app" composer install -o
 	@echo -e "~~> [OK]\n"
 
+update: ## Composer update dependencies
+	@echo -e "~~> Updating composer dependencies..."
+	@docker exec -it "${PROJECT_NAME}-app" composer update -o
+	@echo -e "~~> [OK]\n"
+
 require: ## Run the composer require. (e.g make require PACKAGE="vendor/package")
 	@docker exec -it "${PROJECT_NAME}-app" composer require "${PACKAGE}"
 
