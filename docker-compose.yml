@@ -6,6 +6,8 @@ services:
     working_dir: /var/www/app
     volumes:
       - .:/var/www/app
+    env_file:
+      - .env
     environment:
       - WEB_DOCUMENT_ROOT=/var/www/app/web
       - WEB_DOCUMENT_INDEX=index.php
