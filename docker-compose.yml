@@ -2,7 +2,7 @@ version: '3'
 services:
   app:
     container_name: ${PROJECT_NAME}-app
-    image: webdevops/php-nginx-dev:7.3
+    image: webdevops/php-nginx-dev:${DOCKER_PHP_VERSION}
     working_dir: /var/www/app
     volumes:
       - .:/var/www/app
@@ -25,7 +25,7 @@ services:
       - mysql
 
   mysql:
-    image: mysql:5.7
+    image: mysql:${DOCKER_MYSQL_VERSION}
     container_name: ${PROJECT_NAME}-db
     restart: always
     ports:
