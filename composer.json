@@ -1,23 +1,26 @@
 {
     "name": "dersonsena/yii2-skeleton",
     "description": "A new approach for yii2 basic template",
-    "keywords": ["yii2", "yii2 skeleton", "yii2-template", "template"],
+    "keywords": [
+        "yii2",
+        "yii2 skeleton",
+        "yii2-template",
+        "template"
+    ],
     "homepage": "http://www.yiiacademy.com.br",
     "type": "project",
     "license": "BSD-3-Clause",
     "minimum-stability": "stable",
     "require": {
         "php": ">=7",
-        "yiisoft/yii2": "~2.0.38",
-        "yiisoft/yii2-bootstrap": "~2.0.0",
-        "yiisoft/yii2-swiftmailer": "~2.0.0 || ~2.1.0",
-        "vlucas/phpdotenv": "^3.4"
+        "yiisoft/yii2": "^2.0.0",
+        "yiisoft/yii2-bootstrap": "^2.0.0",
+        "yiisoft/yii2-swiftmailer": "^2.0.0"
     },
     "require-dev": {
-        "yiisoft/yii2-debug": "~2.1.0",
-        "yiisoft/yii2-gii": "~2.1.0",
-        "yiisoft/yii2-faker": "~2.0.0",
-
+        "yiisoft/yii2-debug": "^2.0.0",
+        "yiisoft/yii2-gii": "^2.0.0",
+        "yiisoft/yii2-faker": "^2.0.0",
         "codeception/base": "~2.3.0",
         "codeception/verify": "~0.4.0",
         "codeception/specify": "~0.4.6",

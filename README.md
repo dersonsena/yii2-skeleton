@@ -155,6 +155,10 @@ The [makefile](https://github.com/dersonsena/yii2-skeleton/blob/master/makefile)
 	Perform composer install with optimize autoloaders parameter<br>
     ex.: `make install`
 
+- #### **update**<br>
+	Perform composer update<br>
+    ex.: `make update`
+
 - #### **require**<br>
 	Perform composer require with the PACKAGE parameter<br>
     ex.: `make PACKAGE="vendor/package" require`

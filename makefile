@@ -33,6 +33,11 @@ install: ## Composer install dependencies
 	@docker exec -it "${PROJECT_NAME}-app" composer install -o
 	@echo -e "~~> [OK]\n"
 
+update: ## Composer update dependencies
+	@echo -e "~~> Updating composer dependencies..."
+	@docker exec -it "${PROJECT_NAME}-app" composer update -o
+	@echo -e "~~> [OK]\n"
+
 require: ## Run the composer require. (e.g make require PACKAGE="vendor/package")
 	@docker exec -it "${PROJECT_NAME}-app" composer require "${PACKAGE}"
 
@@ -43,17 +48,17 @@ dump: ## Run the composer dump
 
 migrate: ## Run all the yii migrations
 	@echo -e "\n~~> Running app migrations..."
-	@docker exec -it "${PROJECT_NAME}-app" ./yii migrate
+	@docker exec -it "${PROJECT_NAME}-app" php yii migrate
 	@echo -e "~~> [OK]\n"
 
 migrate-create: ## Run all the ./yii migrate/create. (e.g make migrate-create NAME="migrateName")
-	@docker exec -it "${PROJECT_NAME}-app" ./yii migrate/create "${NAME}"
+	@docker exec -it "${PROJECT_NAME}-app" php yii migrate/create "${NAME}"
 
 migrate-down: ## Run all the yii migrate/down
-	@docker exec -it "${PROJECT_NAME}-app" ./yii migrate/down
+	@docker exec -it "${PROJECT_NAME}-app" php yii migrate/down
 
 cache-clear: ## Flush all yii cache
-	@docker exec -it "${PROJECT_NAME}-app" ./yii cache/flush-all
+	@docker exec -it "${PROJECT_NAME}-app" php yii cache/flush-all
 
 ##@ Database
 

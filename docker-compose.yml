@@ -2,10 +2,12 @@ version: '3'
 services:
   app:
     container_name: ${PROJECT_NAME}-app
-    image: webdevops/php-nginx-dev:7.3
+    image: webdevops/php-nginx-dev:${DOCKER_PHP_VERSION}
     working_dir: /var/www/app
     volumes:
       - .:/var/www/app
+    env_file:
+      - .env
     environment:
       - WEB_DOCUMENT_ROOT=/var/www/app/web
       - WEB_DOCUMENT_INDEX=index.php
@@ -23,9 +25,8 @@ services:
       - mysql
 
   mysql:
-    image: mysql:5.7
+    image: mysql:${DOCKER_MYSQL_VERSION}
     container_name: ${PROJECT_NAME}-db
-    command: --default-authentication-plugin=mysql_native_password
     restart: always
     ports:
       - "${DOCKER_MYSQL_PORT}:3306"
