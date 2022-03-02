@@ -96,7 +96,7 @@ http://localhost:8000
 
 COHESIVE CONTROLLER
 ------------
-Trying to follow the best programming practices, this boilerplate has a controller type called [CohesiveController](./src/Core/Controller/CohesiveController.php) to help you a create a controller class with a single action (aka `handle()` method) and a single responsibility.
+Trying to follow the best programming practices, this boilerplate has a controller type called [CohesiveController](src/Shared/Controller/CohesiveController.php) to help you a create a controller class with a single action (aka `handle()` method) and a single responsibility.
 
 To create a cohesive controller got to [config/routes.php](./config/routes.php) and add your route such as:
 

@@ -1,14 +1,17 @@
 <?php
 
+$dbName = YII_ENV_TEST ? $_ENV['DB_DATABASE_TEST'] : $_ENV['DB_DATABASE'];
+$port = $_ENV['DB_PORT'] ?? 3306;
+
 return [
     'class' => 'yii\db\Connection',
-    'dsn' => getenv('DB_DSN'),
-    'username' => getenv('DB_USERNAME'),
-    'password' => getenv('DB_PASSWORD'),
-    'charset' => getenv('DB_CHARSET'),
+    'dsn' => "mysql:host={$_ENV['DB_HOST']};port={$port};dbname={$dbName}",
+    'username' => $_ENV['DB_USERNAME'],
+    'password' => $_ENV['DB_PASSWORD'],
+    'charset' => 'utf8',
 
     // Schema cache options (for production environment)
-    'enableSchemaCache' => getenv('DB_ENABLE_SCHEMA_CACHE'),
-    'schemaCacheDuration' => getenv('DB_SCHEMA_CACHE_DURATION'),
-    'schemaCache' => getenv('DB_SCHEMA_CACHE_NAME'),
+    'enableSchemaCache' => YII_ENV_PROD,
+    'schemaCacheDuration' => $_ENV['DB_SCHEMA_CACHE_DURATION'],
+    'schemaCache' => 'db-schema-cache',
 ];

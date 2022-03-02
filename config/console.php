@@ -1,26 +1,22 @@
 <?php
+
 $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
+$mailer = require __DIR__ . '/mailer.php';
 
 $config = [
-    'id' => 'basic-console',
+    'id' => 'yii2-skeleton-cli',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'controllerNamespace' => 'App\Commands',
     'controllerMap' => [
         'migrate' => [
             'class' => 'yii\console\controllers\MigrateController',
-            'templateFile' => '@app/Core/Migration/migration-template.php',
-            'migrationPath' => null,
-            'migrationNamespaces' => ['App\Migrations']
+            'templateFile' => '@root/database/migration-template.php',
+            'migrationPath' => '@root/database/migrations'
         ]
-        /*'fixture' => [ // Fixture generation command line.
-            'class' => 'yii\faker\FixtureController',
-        ],*/
     ],
     'aliases' => [
-        '@bower' => '@vendor/bower-asset',
-        '@npm'   => '@vendor/npm-asset',
         '@tests' => '@app/tests',
     ],
     'components' => [
@@ -36,6 +32,7 @@ $config = [
             ],
         ],
         'db' => $db,
+        'mailer' => $mailer
     ],
     'params' => $params,
 ];

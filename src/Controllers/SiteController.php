@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 use Yii;
-use App\Core\Controller\ControllerBase;
+use App\Shared\Controller\ControllerBase;
 use yii\filters\AccessControl;
 use yii\web\Response;
 use yii\filters\VerbFilter;

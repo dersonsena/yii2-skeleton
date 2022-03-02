@@ -1,20 +1,23 @@
 <?php
+
 $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
 $routes = require __DIR__ . '/routes.php';
+$mailer = require __DIR__ . '/mailer.php';
 
 $config = [
     'id' => 'yii2-skeleton',
+    'name' => 'Yii2 Skeleton',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'controllerNamespace' => 'App\Controllers',
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
-        '@npm'   => '@vendor/npm-asset',
+        '@npm' => '@vendor/npm-asset',
     ],
     'components' => [
         'request' => [
-            'cookieValidationKey' => getenv('REQUEST_COOKIE_VALIDATION_KEY'),
+            'cookieValidationKey' => $_ENV['REQUEST_COOKIE_VALIDATION_KEY'],
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
@@ -26,10 +29,7 @@ $config = [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        'mailer' => [
-            'class' => 'yii\swiftmailer\Mailer',
-            'useFileTransport' => true,
-        ],
+        'mailer' => $mailer,
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [

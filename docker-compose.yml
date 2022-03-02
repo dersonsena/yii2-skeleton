@@ -2,27 +2,39 @@ version: '3'
 services:
   app:
     container_name: ${PROJECT_NAME}-app
-    image: webdevops/php-nginx-dev:7.3
-    working_dir: /var/www/app
+    image: webdevops/php-nginx-dev:8.1
+    working_dir: /app
     volumes:
-      - .:/var/www/app
+      - ./:/app
     environment:
-      - WEB_DOCUMENT_ROOT=/var/www/app/web
-      - WEB_DOCUMENT_INDEX=index.php
-      - PHP_MAX_EXECUTION_TIME=86400
+      - WEB_DOCUMENT_ROOT=/app/web
+      - PHP_DATE_TIMEZONE=${APP_TIMEZONE}
+      - PHP_DISPLAY_ERRORS=1
+      - PHP_MEMORY_LIMIT=256M
+      - PHP_MAX_EXECUTION_TIME=120
+      - PHP_POST_MAX_SIZE=50M
+      - PHP_UPLOAD_MAX_FILESIZE=50M
       - PHP_DEBUGGER=xdebug
-      - XDEBUG_REMOTE_PORT=${XDEBUG_REMOTE_PORT}
-      - XDEBUG_REMOTE_AUTOSTART=1
-      - XDEBUG_REMOTE_CONNECT_BACK=off
-      - XDEBUG_REMOTE_HOST=${XDEBUG_REMOTE_HOST}
+      - PHP_IDE_CONFIG=serverName=_
+      - XDEBUG_MODE=debug
+      - XDEBUG_DISCOVER_CLIENT_HOST=0
+      - XDEBUG_IDE_KEY=PHPSTORM
+      - XDEBUG_MAX_NESTING_LEVEL=1500
+      - XDEBUG_START_WITH_REQUEST=yes
+      - XDEBUG_CLIENT_HOST=host.docker.internal
+      - XDEBUG_CLIENT_PORT=9003
+      - XDEBUG_OUTPUT_DIR=/app/.xdebug
     ports:
       - '${DOCKER_APP_PORT}:80'
+      - '${DOCKER_APP_SSL_PORT}:443'
     networks:
-      - yii2-skeleton
+      - yii2-skeleton-network
     depends_on:
-      - mysql
+      - db
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
 
-  mysql:
+  db:
     image: mysql:5.7
     container_name: ${PROJECT_NAME}-db
     command: --default-authentication-plugin=mysql_native_password
@@ -30,13 +42,15 @@ services:
     ports:
       - "${DOCKER_MYSQL_PORT}:3306"
     environment:
-      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
-      MYSQL_DATABASE: ${DB_DATABASE}
+      - TZ='${APP_TIMEZONE}'
+      - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
+      - MYSQL_DATABASE=${DB_DATABASE}
     networks:
-      - yii2-skeleton
+      - yii2-skeleton-network
     volumes:
       - ./.docker/data:/var/lib/mysql
+      - ./.docker/dumps:/var/dumps
 
 networks:
-  yii2-skeleton:
+  yii2-skeleton-network:
     driver: bridge
