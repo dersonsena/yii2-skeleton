@@ -13,7 +13,16 @@ The motivation to make this new template was to try to organize the packages ins
 REQUIREMENTS
 ------------
 
-The minimum requirement by this project template that your Web server supports PHP 7+.
+The minimum requirement by this project template that your Web server supports PHP 8+.
+
+RESOURCES
+------------
+
+- Nginx + PHP 8.1 with Docker using [Webdevops Images](https://github.com/webdevops/Dockerfile) 
+- PHP Unit 9.5
+- Yii2 Bootstrap 5 Extension
+- PHP Codesniffer 3.5
+- PHP Codesniffer Fixer 3
 
 INSTALLATION
 ------------
@@ -37,46 +46,46 @@ You can place your environment settings in `.env` file, as below (note the sampl
 
 ```bash
 # ---------
-# Project
-# ---------
-PROJECT_NAME=yii2-skeleton
-
-# ---------
 # Docker
 # ---------
+PROJECT_NAME=yii2-skeleton
 DOCKER_APP_PORT=8080
+DOCKER_APP_SSL_PORT=443
 DOCKER_MYSQL_PORT=3306
 XDEBUG_REMOTE_PORT=9000
-XDEBUG_REMOTE_HOST=host.docker.internal
 
 # ---------
-# Yii Framework
+# Application
 # ---------
-YII_DEBUG=true
 YII_ENV=dev
+YII_DEBUG=true
 REQUEST_COOKIE_VALIDATION_KEY=YOUR_VALIDATION_KEY
+ADMIN_PASSWORD=
+# APP_TIMEZONE=America/Sao_Paulo
+# APP_LANGUAGE=pt_BR
+APP_BASE_URL=http://localhost:8088
 
 # ---------
 # Database
 # ---------
-DB_DSN=mysql:host=your-db-host;dbname=yii2_skeleton
+DB_HOST=your-db-host
 DB_USERNAME=root
 DB_PASSWORD=secret
-DB_DATABASE=yii2_skeleton
-DB_CHARSET=utf8
-DB_ENABLE_SCHEMA_CACHE=false
+DB_DATABASE=your-db-name
+DB_DATABASE_TEST=your-test-db-name
 DB_SCHEMA_CACHE_DURATION=60
-DB_SCHEMA_CACHE_NAME=cache
 
 # ---------
 # Mailer
 # ---------
 SMTP_HOST=
-SMTP_PORT=
+SMTP_PORT=465
 SMTP_USERNAME=
 SMTP_PASSWORD=
-SMTP_ENCRYPTION=
+SMTP_ENCRYPTION=ssl
 ```
+
+**NOTE:** the commented environment variables are optional and your values set here is its default value.
 
 ### Run your Application
 
@@ -87,6 +96,8 @@ To start your application and start up your containers just run the follow comma
 ```
 make run
 ```
+
+The command above will start 2 docker containers: `yii2-skeleton-app` (Nginx + PHP 8.1) and `yii2-skeleton-db` (MySQL)
 
 If you have set a `DOCKER_APP_PORT` environment variable to `8000`, you will can then access the yout application through the following URL:
 

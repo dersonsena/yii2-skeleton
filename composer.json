@@ -16,8 +16,6 @@
         "phpcs": "phpcs --standard=phpcs.xml",
         "phpcs:fix": "php-cs-fixer fix --config=.php-cs-fixer.php --allow-risky yes",
         "phpcbf": "phpcbf -w -q > /dev/null || true",
-        "psalm": "psalm --show-info=true --threads=8",
-        "psalm:fix": "psalm --alter --issues=all",
         "post-install-cmd": [
             "yii\\composer\\Installer::postInstall"
         ],
@@ -27,7 +25,7 @@
         ]
     },
     "require": {
-        "php": "^8.1",
+        "php": ">=8",
         "ext-intl": "*",
         "ext-json": "*",
         "yiisoft/yii2": "~2.0.45",
